@@ -2,7 +2,7 @@
 # coding=utf-8
 """
 Filename:       server.py
-Last modified:  2016-10-01 19:27
+Last modified:  2016-10-01 19:39
 
 Description:
 
@@ -17,7 +17,7 @@ from os import listdir
 from os.path import isfile, join
 
 from flask import Flask, jsonify, request
-from setting import MODEL_DIR, IMAGE_DIR
+from setting import MODEL_DIR, IMAGE_DIR, HOST, PORT
 import uuid
 from werkzeug import secure_filename
 
@@ -58,4 +58,4 @@ def convert(model):
     return jsonify(result)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host=HOST, port=PORT)

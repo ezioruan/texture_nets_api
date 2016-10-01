@@ -2,7 +2,7 @@
 # coding=utf-8
 """
 Filename:       setting.py
-Last modified:  2016-10-01 15:57
+Last modified:  2016-10-01 19:39
 
 Description:
 
@@ -10,10 +10,14 @@ Description:
 
 import os
 
+
+HOST = '0.0.0.0'
+PORT = 8080
+
 HERE = os.path.abspath(os.path.dirname(__file__))
 TEXTURE_NETS_PATH = "/home/ubuntu/texture_nets"
 MODEL_DIR = "/home/ubuntu/texture_nets"
-IMAGE_DIR = os.path.join(HERE,"images")
+IMAGE_DIR = os.path.join(HERE, "images")
 if not os.path.exists(IMAGE_DIR):
     os.mkdir(IMAGE_DIR)
 
