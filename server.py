@@ -2,7 +2,7 @@
 # coding=utf-8
 """
 Filename:       server.py
-Last modified:  2016-10-01 19:45
+Last modified:  2016-10-01 19:53
 
 Description:
 
@@ -50,7 +50,7 @@ def convert(model):
         uid = str(uuid.uuid4())
         filename = secure_filename(file.filename)
         intput_filename = join(IMAGE_DIR, '%s_%s_%s' % (uid, 'in', filename))
-        file.save(filename)
+        file.save(intput_filename)
     else:
         return jsonify({'code': -1, 'msg': 'save file error'})
     output_filename = join(IMAGE_DIR, '%s_%s_%s' % (uid, 'out', filename))
