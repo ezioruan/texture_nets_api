@@ -2,7 +2,7 @@
 # coding=utf-8
 """
 Filename:       setting.py
-Last modified:  2016-10-01 20:10
+Last modified:  2016-10-01 20:30
 
 Description:
 
@@ -18,7 +18,7 @@ def run_th(input_image, model, save_path):
     try:
         start_time = time.time()
         output = check_output(cmd, cwd=TEXTURE_NETS_PATH,
-                              stderr=STDOUT, timeout=TIMEOUT)
+                              stderr=STDOUT, timeout=TIMEOUT,shell=True)
         end_time = time.time()
         print 'run %s in (%d) s : result %s ' % (cmd, int(end_time - start_time), output)
         return {'code': 0}
