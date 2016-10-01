@@ -71,6 +71,7 @@ coverage.xml
 # Rope
 .ropeproject
 
+# Django stuff:
 logs/
 *.log
 *.pot
@@ -81,9 +82,8 @@ docs/_build/
 #tmp
 pkg/
 *.swp
+src/src
+src/gameServer.run
+config.json
 .DS_Store
 .out
-src/src
-src/upload
-fr_version_mamager_linux_amd64
-publish/*

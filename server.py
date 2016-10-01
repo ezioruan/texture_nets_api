@@ -2,7 +2,7 @@
 # coding=utf-8
 """
 Filename:       server.py
-Last modified:  2016-09-18 16:31
+Last modified:  2016-10-01 19:27
 
 Description:
 
@@ -12,16 +12,50 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-from flask import Flask,jsonify
+
+from os import listdir
+from os.path import isfile, join
+
+from flask import Flask, jsonify, request
+from setting import MODEL_DIR, IMAGE_DIR
+import uuid
+from werkzeug import secure_filename
+
+
 app = Flask(__name__)
 
 from cmd import run_th
 
 
-@app.route('/th_image', methods=['POST'])
-def th_image():
-    output = run_th()
-    return output
+ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png'])
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+
+@app.route('/image/models', methods=['GET'])
+def get_avaible_models():
+    """
+    """
+    models = [f for f in listdir(MODEL_DIR) if isfile(
+        join(MODEL_DIR, f)) and f.endswith('.t7')]
+    return jsonify({"models": models})
+
+
+@app.route('/image/convert/<string:model>', methods=['POST'])
+def convert(model):
+    file = request.files['image']
+    if file and allowed_file(file.filename):
+        uid = str(uuid.uuid4())
+        filename = secure_filename(file.filename)
+        intput_filename = '%s_%s_%s' % (uid, 'in', filename)
+        file.save(join(IMAGE_DIR, filename))
+    else:
+        return jsonify({'code': -1, 'msg': 'save file error'})
+    output_filename = '%s_%s_%s' % (uid, 'out', filename)
+    result = run_th(intput_filename, model, output_filename)
+    return jsonify(result)
 
 if __name__ == '__main__':
     app.run()
