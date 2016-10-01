@@ -2,7 +2,7 @@
 # coding=utf-8
 """
 Filename:       setting.py
-Last modified:  2016-10-01 19:39
+Last modified:  2016-10-01 20:01
 
 Description:
 
@@ -22,6 +22,7 @@ if not os.path.exists(IMAGE_DIR):
     os.mkdir(IMAGE_DIR)
 
 
-CMD = "th test.lua --input_image %s -model_t7 %s -save_path %s -cpu"
+CMD = "cd %s " % TEXTURE_NETS_PATH + \
+    " && th test.lua -input_image %s -model_t7 %s -save_path %s -cpu"
 # will cancel after timeout (seconds)
 TIMEOUT = 15
