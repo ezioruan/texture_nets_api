@@ -2,7 +2,7 @@
 # coding=utf-8
 """
 Filename:       server.py
-Last modified:  2016-10-01 19:53
+Last modified:  2016-10-01 20:40
 
 Description:
 
@@ -22,7 +22,7 @@ import uuid
 from werkzeug import secure_filename
 
 
-app = Flask(__name__)
+app = application = Flask(__name__)
 
 from cmd import run_th
 

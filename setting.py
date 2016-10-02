@@ -2,7 +2,7 @@
 # coding=utf-8
 """
 Filename:       setting.py
-Last modified:  2016-10-01 20:07
+Last modified:  2016-10-02 09:22
 
 Description:
 
@@ -13,6 +13,8 @@ import os
 
 HOST = '0.0.0.0'
 PORT = 8080
+
+HOSTNAME = "http://52.53.179.211/"
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 TEXTURE_NETS_PATH = "/home/ubuntu/texture_nets"
