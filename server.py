@@ -2,7 +2,7 @@
 # coding=utf-8
 """
 Filename:       server.py
-Last modified:  2016-10-01 20:40
+Last modified:  2016-10-02 12:49
 
 Description:
 
@@ -46,6 +46,7 @@ def get_avaible_models():
 @app.route('/image/convert/<string:model>', methods=['POST'])
 def convert(model):
     file = request.files['image']
+    print 'convert file:',request.files
     if file and allowed_file(file.filename):
         uid = str(uuid.uuid4())
         filename = secure_filename(file.filename)
