@@ -2,7 +2,7 @@
 # coding=utf-8
 """
 Filename:       setting.py
-Last modified:  2016-10-02 09:32
+Last modified:  2016-10-02 09:36
 
 Description:
 
@@ -21,7 +21,7 @@ def run_th(input_image, model, save_path):
                               stderr=STDOUT, timeout=TIMEOUT, shell=True)
         end_time = time.time()
         print 'run %s in (%d) s : result %s ' % (cmd, int(end_time - start_time), output)
-        return {'code': 0, 'url': '%s/images/%s' % (HOSTNAME, save_path)}
+        return {'code': 0, 'url': '%s/images/%s' % (HOSTNAME, save_path.split("/")[-1])}
     except Exception, e:
         print 'run_th error', str(e)
         return {'code': -2, 'msg': str(e)}
